@@ -4,6 +4,7 @@ var listOfItems = [['bag', 'jpg'], ['banana','jpg'], ['bathroom','jpg'], ['boots
 var itemPics = [document.getElementById('image1'), document.getElementById('image2'), document.getElementById('image3')];
 var itemPicsDiv = document.getElementById('imageSection');
 var cnt = 0;
+var globalClick = 0;
 //this is the constructor
 function ItemPic(name, extension){
   this.filePath = 'images/' + name + '.' + extension;
@@ -129,15 +130,15 @@ function handleItemClick(event){
       allItems[i].clicks += 1;
     }
   }
-  showRandomItem();
+  globalClick += 1;
+  if(globalClick < 25){
+    showRandomItem();
+  }else{
+    itemPicsDiv.removeEventListener('click', handleItemClick);
+  }
 }
 
 addItems();
 showRandomItem();
-if(cnt < 25){
-  itemPicsDiv.addEventListener('click', handleItemClick);
-  cnt++;
-  console.log('value of the counter ' + cnt);
-}else{
-  itemPicsDiv.removeEventListener('click', handleItemClick);
-}
+itemPicsDiv.addEventListener('click', handleItemClick);
+
