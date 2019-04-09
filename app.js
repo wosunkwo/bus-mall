@@ -96,11 +96,11 @@ var data = {
     data: clicks, // an array that stores the amount of clicks for each item
     backgroundColor: [
       'bisque', 'green','blue','pink','brown','burlywood','navy','lightblue','black','beige',
-      'apricot','azure','champagne','cyan','indigo','jade','magenta','live','pear','taupe'
+      'yellow','azure','violet','cyan','indigo','orange','magenta','gold','coral','red'
     ],
     hoverBackgroundColor: [
-      'red','red','red','red','red','red','red','red','red','red',
-      'red','red','red','red','red','red','red','red','red','red',
+      'white','white','white','white','white','white','white','white','white','white',
+      'white','white','white','white','white','white','white','white','white','white',
     ]
   }]
 };
