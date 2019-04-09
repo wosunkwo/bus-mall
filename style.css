@@ -9,17 +9,23 @@ header{
   text-align: center;
 }
 
+body {
+  background-image: url("https://blog-assets.servicemarket.com/wp-content/uploads/2017/03/Public-transportation-in-Dubai.jpg");
+}
+
+#imageSection{
+  max-height: 300px;
+  max-width: 71%;
+  height: 250px;
+  margin: 0px auto;
+  background-color: grey;
+}
+
 img {
   padding: 30px;
   max-height: 200px;
   max-width: 70%;
   float: left;
-  border: 2px solid red;
-}
-
-#imageSection{
-  max-height: 300px;
-  max-width: 80%;
-  height: 250px;
   margin: 0px auto;
 }
+
