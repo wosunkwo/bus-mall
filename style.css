@@ -2,10 +2,14 @@
   box-sizing: border-box;
 }
 
+header{
+  background-color: gray;
+  width: 960px;
+  margin: 0px auto;
+}
+
 img {
   max-height: 200px;
   max-width: 70%;
-  margin: 0 auto;
-  border: 2px solid red;
   float: left;
 }

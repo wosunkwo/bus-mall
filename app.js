@@ -27,7 +27,7 @@ function getRandomItem(){
   return random;
 }
 
-/*
+
 //this fucnction generates 3 random inages to the dom
 function showRandomItem(){
   var random = getRandomItem();
@@ -55,8 +55,8 @@ function showRandomItem(){
   }
   console.log('-------------------');
 }
-*/
 
+/*
 function showRandomItem(){
   cnt++;
   if (cnt === 1){
@@ -119,18 +119,11 @@ function showRandomItem(){
     console.log('-------------------------------');
   }
 }
-
-
-
-
-
-
-
-
+*/
 
 //this functions calculates the total number of clicks an image gets and calls the function that will generate 3 new images to the dom
+
 function handleItemClick(event){
-//  console.log(event.target.alt);
   for(var i = 0; i<allItems.length; i++){
     if(allItems[i].name === event.target.alt){
       allItems[i].clicks += 1;
@@ -141,4 +134,10 @@ function handleItemClick(event){
 
 addItems();
 showRandomItem();
-itemPicsDiv.addEventListener('click', handleItemClick);
+if(cnt < 25){
+  itemPicsDiv.addEventListener('click', handleItemClick);
+  cnt++;
+  console.log('value of the counter ' + cnt);
+}else{
+  itemPicsDiv.removeEventListener('click', handleItemClick);
+}
