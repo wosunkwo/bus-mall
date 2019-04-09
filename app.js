@@ -3,7 +3,7 @@ var allItems = [];
 var listOfItems = [['bag', 'jpg'], ['banana','jpg'], ['bathroom','jpg'], ['boots','jpg'], ['breakfast','jpg'], ['bubblegum','jpg'], ['chair','jpg'], ['cthulhu','jpg'], ['dog-duck','jpg'], ['dragon','jpg'], ['pen','jpg'], ['pet-sweep','jpg'], ['scissors','jpg'], ['shark','jpg'], ['sweep','png'], ['tauntaun','jpg'], ['unicorn','jpg'], ['usb','gif'], ['water-can','jpg'], ['wine-glass','jpg']];
 var itemPics = [document.getElementById('image1'), document.getElementById('image2'), document.getElementById('image3')];
 var itemPicsDiv = document.getElementById('imageSection');
-var uniqueRandomArr = [0,0,0];
+var uniqueRandomArr = [];
 var globalClick = 0;
 var ulEl = document.getElementById('votingResult');
 var votingResultTextDom = document.getElementById('votingResultText');
@@ -34,7 +34,7 @@ function getRandomItem(){
 //this fucnction generates 3 random inages to the dom
 function showRandomItem(){
   var random = getRandomItem();
-  for(var j=0; j<uniqueRandomArr.length; j++){
+  for(var j=0; j<itemPics.length; j++){
     while(uniqueRandomArr.includes(random)){
       random = getRandomItem();
     }
@@ -58,7 +58,7 @@ function handleItemClick(event){
     }
   }
   globalClick += 1;
-  if(globalClick <= 25){
+  if(globalClick < 25){
     showRandomItem();
   }else{
     itemPicsDiv.removeEventListener('click', handleItemClick);
