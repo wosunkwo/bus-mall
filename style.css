@@ -14,8 +14,7 @@ body {
 }
 
 #imageSection{
-  max-height: 300px;
-  max-width: 71%;
+  max-width: 70%;
   height: 250px;
   margin: 0px auto;
   background-color: grey;
@@ -24,6 +23,7 @@ body {
 img {
   max-height: 200px;
   max-width: 70%;
+  padding: 10px;
  /* float: left; */
   margin: 0px auto;
 }
