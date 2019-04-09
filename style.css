@@ -1,0 +1,11 @@
+*{
+  box-sizing: border-box;
+}
+
+img {
+  max-height: 200px;
+  max-width: 70%;
+  margin: 0 auto;
+  border: 2px solid red;
+  float: left;
+}
