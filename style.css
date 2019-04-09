@@ -22,10 +22,13 @@ body {
 }
 
 img {
-  padding: 30px;
   max-height: 200px;
   max-width: 70%;
-  float: left;
+ /* float: left; */
   margin: 0px auto;
 }
 
+section{
+  background-color: gray;
+  max-width: 35%;
+}

@@ -5,6 +5,9 @@ var itemPics = [document.getElementById('image1'), document.getElementById('imag
 var itemPicsDiv = document.getElementById('imageSection');
 var uniqueRandomArr = [0,0,0];
 var globalClick = 0;
+var ulEl = document.getElementById('votingResult');
+var votingResultTextDom = document.getElementById('votingResultText');
+
 //this is the constructor
 function ItemPic(name, extension){
   this.filePath = 'images/' + name + '.' + extension;
@@ -55,12 +58,22 @@ function handleItemClick(event){
     }
   }
   globalClick += 1;
-  if(globalClick < 25){
+  if(globalClick <= 25){
     showRandomItem();
   }else{
     itemPicsDiv.removeEventListener('click', handleItemClick);
+    displayVotingResult();
   }
-  console.log('this is the amount of clicks so far = ' +globalClick);
+}
+
+//This function displays the voting result
+function displayVotingResult(){
+  votingResultTextDom.textContent = 'Result:';
+  for(var i =0; i<allItems.length; i++){
+    var liEl = document.createElement('li');
+    liEl.textContent = allItems[i].name + ': '+ allItems[i].clicks + ' votes';
+    ulEl.appendChild(liEl);
+  }
 }
 
 addItems();
