@@ -9,6 +9,11 @@ header{
   text-align: center;
 }
 
+header button {
+ /* float: right;*/
+ background-color: red;
+}
+
 body {
   background-image: url("https://www.biography.com/.image/t_share/MTQ1MTM5Nzk0MTMxODIxOTc2/rosa-parks---civil-rights-pioneer.jpg");
   background-repeat: no-repeat;
