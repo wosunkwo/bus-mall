@@ -7,6 +7,7 @@ var uniqueRandomArr = [];
 var globalClick = 0;
 var ulEl = document.getElementById('votingResult');
 var votingResultTextDom = document.getElementById('votingResultText');
+var clearLocalStorageDom = document.getElementById('clearLocalStorage');
 var names = [];
 var clicks = [];
 var itemResultChart;
@@ -72,10 +73,36 @@ function handleItemClick(event){
   if(globalClick < 25){
     showRandomItem();
   }else{
+    localStorage.allItemsStorage = JSON.stringify(allItems);
     itemPicsDiv.removeEventListener('click', handleItemClick);
     drawChart();
     displayVotingResult();
   }
+}
+
+//this is the function that checks if the local storage is empty or not. If the local storage is empty it initializes the object array, else it sends what is already in the local storage to the array before loading new images.
+function localStorageHandler(){
+  var allItemsLocalStorage = [];
+  if(localStorage.getItem('allItemsStorage') === null){
+    showRandomItem();
+    itemPicsDiv.addEventListener('click', handleItemClick);
+    clearLocalStorageDom.addEventListener('click', clearLocalStorageFunction);
+  }else{
+    allItemsLocalStorage = JSON.parse(localStorage.allItemsStorage);
+    for(var j=0; j<allItems.length; j++){
+      allItems[j].click = allItemsLocalStorage[j].click;
+      allItems[j].views = allItemsLocalStorage[j].views;
+    }
+    showRandomItem();
+    itemPicsDiv.addEventListener('click', handleItemClick);
+    clearLocalStorageDom.addEventListener('click', clearLocalStorageFunction);
+  }
+}
+
+function clearLocalStorageFunction(){
+  localStorage.clear();
+  console.log('local storage has been cleared');
+  clearLocalStorageDom.removeEventListener('click', clearLocalStorageFunction);
 }
 
 //This function displays the voting result
@@ -87,7 +114,6 @@ function displayVotingResult(){
     ulEl.appendChild(liEl);
   }
 }
-
 
 //stuffs related to chart
 var data = {
@@ -129,8 +155,6 @@ function drawChart() {
   });
 }
 
-
 addItems();
-showRandomItem();
-itemPicsDiv.addEventListener('click', handleItemClick);
+localStorageHandler();
 
