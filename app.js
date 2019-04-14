@@ -10,7 +10,6 @@ var votingResultTextDom = document.getElementById('votingResultText');
 var clearLocalStorageDom = document.getElementById('clearLocalStorage');
 var names = [];
 var clicks = [];
-var itemResultChart;
 
 //this is the constructor
 function ItemPic(name, extension){
@@ -115,43 +114,35 @@ function displayVotingResult(){
   }
 }
 
-//stuffs related to chart
-var data = {
-  labels: names, // an array that stores the names of the items
-  datasets: [{
-    data: clicks, // an array that stores the amount of clicks for each item
-    backgroundColor: [
-      'bisque', 'green','blue','pink','brown','burlywood','navy','lightblue','black','beige',
-      'yellow','azure','violet','cyan','indigo','orange','magenta','gold','coral','red'
-    ],
-    hoverBackgroundColor: [
-      'white','white','white','white','white','white','white','white','white','white',
-      'white','white','white','white','white','white','white','white','white','white',
-    ]
-  }]
-};
-
 function drawChart() {
-  var chDom = document.getElementById('votingResultChart').getContext('2d');
-  itemResultChart = new Chart(chDom, {
-    type: 'polarArea',
+  var canvas = document.getElementById('votingResultChart');
+  var ctx = canvas.getContext('2d');
+
+  var data = {
+    labels: names, // an array that stores the names of the items
+    datasets: [{
+      label: 'Total number of votes',
+      data: clicks, // an array that stores the amount of clicks for each item
+      backgroundColor: [
+        'bisque', 'green','blue','pink','brown','burlywood','navy','lightblue','black','beige',
+        'yellow','azure','violet','cyan','indigo','orange','magenta','gold','coral','red'
+      ],
+      hoverBackgroundColor: []
+    }]
+  };
+  var voteChart = new Chart(ctx, {
+    type: 'bar',
     data: data,
     options: {
-      responsive: false,
-      animation: {
-        duration: 1000,
-        easing: 'easeOutBounce'
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            stepSize: 1.0
+          }
+        }]
       }
     },
-    scales: {
-      yAxes: [{
-        ticks: {
-          max: 10,
-          min: 0,
-          stepSize: 1.0
-        }
-      }]
-    }
   });
 }
 
